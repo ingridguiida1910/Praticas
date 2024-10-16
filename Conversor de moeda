@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class conversormoeda {
+   public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    double taxadolarparareal = 5.25;
+    double taxaeuroparareal = 5.65;
+    double taxadolarparaeuro = 0.85;
+
+    System.out.print("Informe a moeda de origem (dolar, euro ou real): ");
+    String moedaorigem = scanner.nextLine().toLowerCase();
+
+    System.out.print("Informe a moeda de destino (dolar, euro ou real):");
+    String moedadestino = scanner.nextLine().toLowerCase();
+
+    System.out.print("Informe o valor a ser convertido: ");
+    double valor = scanner.nextDouble();
+
+    double valorconvertido = 0;
+
+    if (moedaorigem.equals("dolar") && moedadestino.equals("real")) {
+        valorconvertido = valor * taxadolarparareal;
+
+    } else if (moedaorigem.equals("dolar") && moedadestino.equals("euro")) {
+        valorconvertido = valor *taxadolarparaeuro;
+               
+    } else if (moedaorigem.equals("euro") && moedadestino.equals("real")) {
+        valorconvertido = valor  *taxaeuroparareal;
+        
+    } else if (moedaorigem.equals("euro") && moedadestino.equals("dolar")) {
+      valorconvertido = valor *taxadolarparaeuro;
+      
+    } else if (moedaorigem.equals("real") && moedadestino.equals("dolar")) {
+        valorconvertido = valor*taxadolarparareal;
+                
+    } else if (moedaorigem.equals("real") && moedadestino.equals("euro")) {
+      valorconvertido = valor*taxaeuroparareal;
+
+    } else {
+        System.out.println("não foi possivel fazer esta conversão");
+        scanner.close();
+        return;
+    }
+
+    System.out.printf("valorconvertido: %.2f %s\n", valorconvertido,moedadestino);
+     
+    scanner.close();
+
+    }
+
+}
